@@ -31,11 +31,11 @@ inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['Data'])
 inflow_fig.layout.title = 'Debit Air Masuk (Inflow)'
 
 outflow_fig = go.FigureWidget()
-outflow_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Penguapan'])
+outflow_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Qout'])
 outflow_fig.layout.title = 'Debit Air Keluar (Outflow)'
 
 simulation_fig = go.FigureWidget()
-# simulation_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Data'])
+# simulation_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Qout'])
 simulation_fig.layout.title = 'Simulation'
 
 
@@ -76,7 +76,7 @@ def graph_update(n_clicks):
     # filtering based on the slide and dropdown selection
     if n_clicks >=1:
         #program numerik ---start----
-        inout = df_inflow["Data"].values - df_outflow["Penguapan"].values
+        inout = df_inflow["Data"].values - df_outflow["Qout"].values
         N = len(inout)
         u = np.zeros(N)
         u0 = 196.800
