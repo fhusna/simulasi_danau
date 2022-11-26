@@ -27,7 +27,7 @@ header = html.H1("Aplikasi Simulasi Kapasitas Embung E", style={'textAlign': 'ce
 subtitle = html.H2("MK Kapita Selekta Matematika Komputasi (MA4103)", style={'textAlign': 'center'})
 subtitle = html.H3("Kelompok 9", style={'textAlign': 'center'})
 inflow_fig = go.FigureWidget()
-inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['Data'])
+inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['Data2'])
 inflow_fig.layout.title = 'Debit Air Masuk (Inflow)'
 
 outflow_fig = go.FigureWidget()
