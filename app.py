@@ -28,7 +28,7 @@ subtitle = html.H2("MK Kapita Selekta Matematika Komputasi (MA4103)", style={'te
 subtitle = html.H3("Kelompok 9", style={'textAlign': 'center'})
 
 inflow_fig = go.FigureWidget()
-inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['CurahHujan(M^3)'])
+inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['CurahHujan'])
 inflow_fig.layout.title = 'Debit Air Masuk (Inflow)'
 
 outflow_fig = go.FigureWidget()
@@ -77,7 +77,7 @@ def graph_update(n_clicks):
     # filtering based on the slide and dropdown selection
     if n_clicks >=1:
         #program numerik ---start----
-        inout = df_inflow["CurahHujan(M^3)"].values - df_outflow["Qout"].values
+        inout = df_inflow["CurahHujan"].values - df_outflow["Qout"].values
         N = len(inout)
         u = np.zeros(N)
         u0 = 196.800
