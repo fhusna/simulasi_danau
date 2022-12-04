@@ -26,8 +26,9 @@ df_outflow = pd.read_csv(url_outflow)
 header = html.H1("Aplikasi Simulasi Kapasitas Embung E", style={'textAlign': 'center'})
 subtitle = html.H2("MK Kapita Selekta Matematika Komputasi (MA4103)", style={'textAlign': 'center'})
 subtitle = html.H3("Kelompok 9", style={'textAlign': 'center'})
+
 inflow_fig = go.FigureWidget()
-inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['Data2'])
+inflow_fig.add_scatter(name='Inflow', x=df_inflow['Bulan'], y=df_inflow['CurahHujan(M^3)'])
 inflow_fig.layout.title = 'Debit Air Masuk (Inflow)'
 
 outflow_fig = go.FigureWidget()
@@ -35,9 +36,8 @@ outflow_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Qou
 outflow_fig.layout.title = 'Debit Air Keluar (Outflow)'
 
 simulation_fig = go.FigureWidget()
-# simulation_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Qout'])
+# simulation_fig.add_scatter(name='Outflow', x=df_outflow['Bulan'], y=df_outflow['Penguapan'])
 simulation_fig.layout.title = 'Simulation'
-
 
 #layout aplikasi
 app.layout = html.Div(
@@ -65,6 +65,7 @@ app.layout = html.Div(
     
 )
 
+
 #interaksi aplikasi
 @app.callback(
     Output(component_id='simulation-result', component_property='figure'),
@@ -76,7 +77,7 @@ def graph_update(n_clicks):
     # filtering based on the slide and dropdown selection
     if n_clicks >=1:
         #program numerik ---start----
-        inout = df_inflow["Data"].values - df_outflow["Qout"].values
+        inout = df_inflow["CurahHujan(M^3)"].values - df_outflow["Qout"].values
         N = len(inout)
         u = np.zeros(N)
         u0 = 196.800
